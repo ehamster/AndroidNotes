@@ -1,0 +1,10 @@
+public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.main_layout);
+}
+1.在java onCreate方法使用setContentView设置当前类的布局文件
+
+2.view has ID。 use android:id="@+id/my". @表示展开其余部分。+表示这是新的资源，创建并添加到R.java
+调用android资源ID时用这个 android:id="@android:id/asasas"
+
+3.
