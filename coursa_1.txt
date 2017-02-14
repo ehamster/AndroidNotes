@@ -1,0 +1,8 @@
+java inheritance subclass extends superclass
+Which of the following are key concepts found in all object-oriented programming languages? inheritance and polymorphism.
+Allows a subclass to inherit all non-private field & methods from a super class
+java.lang.object 
+subclass inherited from super class for 3 purposes
+  1.To augment the subclass API
+  2.To implement sublcass method
+  3.override super class methods
