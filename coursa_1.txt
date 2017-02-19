@@ -8,3 +8,10 @@ subclass inherited from super class for 3 purposes
   3.override super class methods
 
 Using Log.i(LOG_TAG,""); to debug
+Variable and Type
+
+byte -> short -> int -> long ->float ->double
+char -> int
+
+Android print:
+out.println();
