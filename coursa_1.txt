@@ -31,3 +31,11 @@ Result: Compile time error.
 float mymethod(int a, float b)
 float mymethod(float var1, int var2)
 Result: Perfectly fine. 
+
+for(int num : arr){
+}
+1:cant edit array
+2:just one setp by setp
+3:can not get index
+
+
