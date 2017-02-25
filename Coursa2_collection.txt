@@ -1,0 +1,15 @@
+Collection is a object that contains objects
+like: ArrayList HashMap
+generics type <> 
+
+Collection<> name = new Collection<>();
+Method: 
+  boolean add(E o)
+  Iterator<E> iterator()
+  
+  Interfaces:
+  1. Set   interface Set<E> extends Collection, Iterable      //prevent duplicated
+  2.List   interface List<E> extends Collection, Iterable  //List is an ordered sequence
+  3.Map    interface Map<K,V>                              //prevent duplicated key
+  V put(K key, V value)
+  V get(object key)
