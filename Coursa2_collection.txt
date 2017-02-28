@@ -13,3 +13,22 @@ Method:
   3.Map    interface Map<K,V>                              //prevent duplicated key
   V put(K key, V value)
   V get(object key)
+
+Hash Table and Binary search tree
+Use this Set<String> ss = new LinkedHashSet<String>();
+not this LinkedHashSet<String> ss = new LinkewdHashSet<String>();// more convenient to edit
+
+Each collection has iterator() method that return Iterator object// We dont care implement of Iterator
+1.hasNext(): //return true if 
+2.next();
+3.remove(); //remove last value  that was accessed
+Iterator<String> ite = myFriends.iterator)(;
+while(ite.hasNext){
+String a = ite.next();
+System.out.println(a);
+}
+Map interface does not provide for iterator
+But Map has two methods:
+1.Set<K> keySet()
+2.Collection<V> values()
+ArrayList:
