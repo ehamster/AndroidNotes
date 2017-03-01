@@ -1,2 +1,38 @@
-构造方法调用构造方法，第一句写 this(1,2);
-mutator method:Set and accessor method:Get
+
+Three Type Methods :
+  1.mutator method:Set 
+  2.accessor method:Get
+  3.Constructors method:When one constructor method need to call another constructor method. use this("a",2);//In the First Line 
+Class A{
+private int i;}
+
+public class B{
+A a = new A();
+a.i = 0;//This is error. private can be just used in it own class
+} 
+1.Instance variables should be private
+2.Methods not used to access or mutate data should be private
+3.Methods are only used by other methods should be private
+
+This:means use this class constructor(object)
+    1.method(){
+        this.method()
+    }
+    2.this(parameter)// To call one constructor from another constructor
+    3.this.field// to call an instance variable 
+override ： Use same return type parameters and name and more public authority
+
+Generics:
+    
+public class Account<T>{
+private T number;
+
+public Account(T para){
+        number = para;
+    }
+}
+ Account<String> a = new Account<>("asa");
+ 2. T can not be primate type
+ 3. can not declarestatic field   private static T N
+ 
+ 
