@@ -1,0 +1,2 @@
+构造方法调用构造方法，第一句写 this(1,2);
+mutator method:Set and accessor method:Get
