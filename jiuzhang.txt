@@ -1,1 +1,47 @@
-
+1. Android Studio
+2. 3 部分：
+    1.AndroidManifest.xml(配置) xml(EXtensible Markup Language)
+    
+    2.source code
+      test里面放测试用例
+      android test(放逻辑测试)
+    onCreate(暂时理解为入口函数)
+      i
+    3. 资源文件
+    布局文件 res/layout
+    菜单 res/menu
+    静态图矢量图 res/drawable
+    程序图标 res/mipmap
+    静态字符串 res/values/strings.xml
+    
+3.代码怎么转化为apk
+  android studio 自带了 gradle
+4.第一个程序Yo
+      layout.xml表示显示的东西
+      findViewById()返回的是一个view
+      view是组成ui的最小单元
+      status bar是顶部系统自带状态栏
+      Button b = (Button) findViewById();
+      b.setOnClickListener(new View.onClickListener(){
+        public void onClick()// callback函数。 不由程序元调用，由系统调用 })；
+   5.得到编辑框内容
+   EditText e =  (EditText) findViewById(R.id.);
+   String s = e.getText().toString()
+   Toast.makeText();
+   
+6. UI基础
+margin and padding
+button and button : margin  dp为单位
+button and content: padding
+注意DP  ：长度单位Density-independent Pixels
+320 px/inch 视网膜级别
+dpi = ppi = pixel per inch = dots per inch
+hdpi = high dpi = 254 ppi
+316ppi = xhpi
+445ppi = xxdpi
+分级
+ldpi = 120dpi
+mdpi = 256dpi
+hdpi = 240dpi
+使用dp在不同像素手机手效果差不多
+1dp = (dpi / 160)px
