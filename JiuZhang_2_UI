@@ -7,7 +7,7 @@ relativelayout：可以直接设置到右边
  字号大小使用sp不用dp
 
  UI嵌套
-  tools:text= 是什么意思
+  tools:text= 是什么意思?//仅仅在preview模式下可见
   Linearlayout 孩子设置layout_weight
     layout_weight = 1
     1.父亲是水平的，孩子设定layout_weight 则孩子宽度失效
@@ -26,9 +26,9 @@ relativelayout：可以直接设置到右边
    draw容器先draw内部孩子，递归画
    所以层数越多越占用资源
    
-   Image有2种  .png格式
-   1.static image
-   2.vector image(prefer)
+   Image有2种  
+   1.static image .png格式
+   2.vector image(prefer) .sve
   1. 小图标可以官网下载：anction bar 用24dp  
    没有相对应低像素的图片的话，则会实时downscale图片，降低流畅性
    所以需要将所有目录下各种像素图片下载放进去
@@ -49,6 +49,13 @@ relativelayout：可以直接设置到右边
     在res/value/string里面设置标签
     
     android:text = "＠string"
+    
+   多国语言，value上new一个new Android resource file
+   名字为strings
+   目录名字设置为 values-zh 
+   
+   Fake data
+   
     
     
     
