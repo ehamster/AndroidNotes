@@ -1,0 +1,55 @@
+LinearLayout：需要用挤的方式挤到右边
+FrameLayout
+relativelayout：可以直接设置到右边
+  match_parent
+  wrap_content
+  fill_parent(早期)
+ 字号大小使用sp不用dp
+
+ UI嵌套
+  tools:text= 是什么意思
+  Linearlayout 孩子设置layout_weight
+    layout_weight = 1
+    1.父亲是水平的，孩子设定layout_weight 则孩子宽度失效
+    1.. //尽量充满父亲剩下宽度
+    2..两个都是1，均分宽度
+    
+  ScoreView'滚动条
+  
+  Android draw UI setContentView(R.layout.activity_main);
+  SetContentView:
+    -1.读取xml里面的内容
+    -2.解析成tree
+    -3.draw tree
+    
+   View 里面有一个方法叫draw
+   draw容器先draw内部孩子，递归画
+   所以层数越多越占用资源
+   
+   Image有2种  .png格式
+   1.static image
+   2.vector image(prefer)
+  1. 小图标可以官网下载：anction bar 用24dp  
+   没有相对应低像素的图片的话，则会实时downscale图片，降低流畅性
+   所以需要将所有目录下各种像素图片下载放进去
+   
+   2.vector image
+    sve对应矢量图， 是一个xml，放在drawable
+    会动态画vector image
+    使用矢量图一个就够了，不需要各种像素的图
+    ＃01,ff,ff,ff   透明度加RGB
+    
+    How to use custom image
+      测试的时候可以放到最高dpi文件夹里
+      
+   字符串  i18n （internationalization）
+    android:text = "string"// antipattern 错误的
+    1.修改不方便
+    2.多国语言问题
+    在res/value/string里面设置标签
+    
+    android:text = "＠string"
+    
+    
+    
+   
