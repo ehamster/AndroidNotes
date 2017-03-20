@@ -1,0 +1,38 @@
+ContentDescription: 帮助盲人阅读
+Dynamic ListUI
+  -1.create new file layout.xml 放入需要重复的 view
+  -2.mainactivity create new container 
+  <LinearLayout
+  orientation = vertical
+  id = education_item
+  
+  />
+  -3.把每一个第一步的东西转成一个view放入容器中
+    -1.LinearLayout container = findViewBiId(R.id.education_item);
+    -2.for(Education : educations){
+      View view = getEducationView(education);
+      educationContainer.addView(view);
+    }
+    private View getEducationView(Education education){
+      View view = getLayoutInflayer().inflate(R.layout.education_item,null)//layout转化为一个树（把xml转化为view）
+      填坑
+      return view
+    }//null 是layout父亲，限定孩子大小
+    
+    表单界面Form UI
+      -.back button and menu item //表明是次级activity
+      -1.create activity_layout file
+      -2.create activity_java
+      -3.在mainufest文件里声明一下
+      -4.
+      
+      返回按钮：
+        -getsupportactionbar().setdisplayHomeasupEnable(true);
+        public boolean onOptionsItemSelected(MenuItem item){
+          if(item.getItemid() == android.R.id.home){
+          finish();
+          return true
+          }
+          return super.onOptionsItemSelected(item);
+        }
+      
