@@ -1,0 +1,54 @@
+http: send request to get website
+1. GET 看一看网页
+server response
+a string. browser 渲染成一个界面
+1.1带参数的GET
+ Query String parameter  ex:?day=100&month=11
+2. POST
+3.PUT
+4.DELETE
+
+B/S:do sth on browser and C/S need web servers
+email不是b/s 因为协议不一样 email use pop3 SMTP
+
+
+Android network programming
+1.manifest file 
+<uses-permission android:name="android.permission.INTERNET">
+2.第三方类库 Android Asynchronous Http Client
+Gradle write  添加compile 'com.loopj.android:android-async-http:1.4.9'看官网学习第三方类库
+loopj.com
+AsychHttpClient client = new AsychHttpClient();
+client.get("http://www.google.com",new AsyncHttpResponseHandler(){
+  onSuccess(){text.setText(new Sttring(response)); } 传回来一个byte[] response 代表网页//拿到网页源代码，还没有解析render
+  onFailure(){}
+})
+Synchronous vs Asynchronous
+函数调用方式。耗时比较长的函数
+s: 
+dosth(); 
+networkCall(); // 耗时长
+dosthelse();
+as:
+dosth();
+networkCall(callback); //callback is function 仅仅发起操作。callback在networkcall
+doSthelse(); // 不需要等net结束就可以执行
+耗时的操作才论是否是同步
+http请求就是耗时操作
+okhttp第三方类库
+1。加到gradle里面。think一下再用
+2。这个是同步的，不存在发起一个请求立刻返回，等请求结束再执行的情况
+UI thread是只有一个的
+
+android two type thread ui and nonui
+1.ui thread is only one
+ui thread里的代码时间不能太长
+使用for循环50亿for(int i=0;i<5000000000;++i){}如果界面卡住说明在UI thread执行
+在非UI thread修改界面时，产生交互
+在非UI线程是不能修改UI的，要交给UI做
+1。在其他线程这么写使用activity的方法
+  runOnUiThread（new runnable(){
+    TextView text = findViewById();
+    text.setText();
+})
+2.
