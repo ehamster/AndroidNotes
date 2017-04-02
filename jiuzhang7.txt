@@ -1,0 +1,3 @@
+RecyclerView
+  1.more flexible than linearlayout
+  2.
