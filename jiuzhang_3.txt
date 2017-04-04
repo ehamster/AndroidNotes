@@ -27,15 +27,29 @@ Dynamic ListUI
       -4.
       
       返回按钮：
-        -getsupportactionbar().setdisplayHomeasupEnable(true);
-        public boolean onOptionsItemSelected(MenuItem item){
-          if(item.getItemid() == android.R.id.home){
-          finish();
-          return true
-          }
+      1.  在oncreate里面添加
+      getsupportactionbar().setdisplayHomeasupEnable(true);//显示返回在actionbar里面
+      2. override onOptionItemSelected方法
+      public boolean onOptionsItemSelected(MenuItem item){
+          if(item.getItemid() == android.R.id.home){ //if item's id is the id of return button
+          finish(); //finish cuttenr activity
+          return true;
+         }
           return super.onOptionsItemSelected(item);
         }
-      
+      done按钮：
+      1.create menu directory
+      2.create menu resource file
+      3.<item
+        android:id="@+id/save"
+        android:icon="@drawable/ic_done_white_24dp"
+        app:showAsAction="always"
+        android:title="@string/action_save"/>
+      4.override onCreateOptionMenu
+      public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_education_edit,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
 Data Flow between Activitys
   -1.回来的的flow
   startactivityForResult()
