@@ -73,3 +73,31 @@ Data Flow between Activitys//activity之间传递数据
             Education result = data.getParcelableExtra(KEY_EDUCATION);
         }
     }
+    保存数据到本地
+    1.Shared Preferences //key-value
+    2.Internal /external storage //java read and write
+    3.SQLite database
+    4.Cloud
+    
+    1.sharedPreferences
+      1.create a sharedPreference: SharedPreferences sp = context.getSharedPreferences(NAME,Context.MODE_PRIVATE);
+      //context is father of activity
+    2. SharedPreferences.Editor editor = sp.edit();
+    editor.putString("key", "aaa"); //key-value
+    editor.putInt("int",10); 
+    editor.apply();
+    //read
+    SharedPreferences sp = context.getSharedPreferences(NAME,Context.MODE_PRIVATE);
+    String value = sp.getString("key",""); //第一个参数不存在的时候返回第二个参数
+    int intValue = sp.getInt("int",0);
+    where is SharedPreferences
+    写到文件里，data/com...../shared_prefs/
+    
+    如何把对象存在SharedPreference里面，通过序列化
+    List<Education> educations = new ArrayList<>();
+     editor.putString("education", convertEducationListToString(educations));
+     用GSON，convert java Objects into JSON representation
+{
+  "name": "JING GUO",
+  "age": 18,
+}
