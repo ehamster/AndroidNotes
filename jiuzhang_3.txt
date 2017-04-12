@@ -79,7 +79,7 @@ Data Flow between Activitys//activity之间传递数据
     3.SQLite database
     4.Cloud
     
-    1.sharedPreferences
+    1.sharedPreferences (基本类型直接传递，对象需使用Gson转化为Json对象再传递)
       1.create a sharedPreference: SharedPreferences sp = context.getSharedPreferences(NAME,Context.MODE_PRIVATE);
       //context is father of activity
     2. SharedPreferences.Editor editor = sp.edit();
@@ -97,7 +97,19 @@ Data Flow between Activitys//activity之间传递数据
     List<Education> educations = new ArrayList<>();
      editor.putString("education", convertEducationListToString(educations));
      用GSON，convert java Objects into JSON representation
+     And convert Json representation into object
 {
-  "name": "JING GUO",
+  "name": "JING GUO",//Json
   "age": 18,
 }
+How to use Gson
+  1.In build.gradle(Module app) add compile 'com.google.code.gson:2.7'
+  2.click sync now
+  3.Gson gson = new Gson();
+  4.String jsonString = gson.toJson(object);
+  把Json转化为对象
+  1.Type type = new TypeToken<project>(){}.getType();
+  2.Project projectFromJson = gson.fromJson(jsonString,type);
+  
+  
+  Debug
