@@ -41,7 +41,7 @@ hdpi = high dpi = 254 ppi
 445ppi = xxdpi
 分级
 ldpi = 120dpi
-mdpi = 256dpi
+mdpi = 160dpi
 hdpi = 240dpi
 使用dp在不同像素手机手效果差不多
 1dp = (dpi / 160)px
