@@ -24,7 +24,7 @@ relativelayout：可以直接设置到右边
     
    View 里面有一个方法叫draw
    draw容器先draw内部孩子，递归画
-   所以层数越多越占用资源
+   所以层数越多越占用资源,所以尽量少层数
    
    Image有2种  
    1.static image .png格式
@@ -43,12 +43,12 @@ relativelayout：可以直接设置到右边
       测试的时候可以放到最高dpi文件夹里
       
    字符串  i18n （internationalization）
-    android:text = "string"// antipattern 错误的
+    android:text = "string"// 这样做不好，写死了
     1.修改不方便
     2.多国语言问题
     在res/value/string里面设置标签
     
-    android:text = "＠string"
+    android:text = "＠string/education"
     
    多国语言，value上new一个new Android resource file
    名字为strings
