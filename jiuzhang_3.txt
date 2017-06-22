@@ -11,14 +11,15 @@ Dynamic ListUI
     -1.LinearLayout container = findViewBiId(R.id.education_item);
     -2.for(Education : educations){
       View view = getEducationView(education);
-      educationContainer.addView(view);
-    }
+      educationContainer.addView(view);//一个view表示一个education对象
+      }
     private View getEducationView(Education education){
       View view = getLayoutInflayer().inflate(R.layout.education_item,null)//layout转化为一个树（把xml转化为view）
       填坑
+     ((TextView) view.findViewById(R.id.education_school)).setText(education.school);
       return view
     }//null 是layout父亲，限定孩子大小
-    
+    可以说getLayoutInflater().inflater() 是用来找 res/layout下的 xml 布局文件，并且实例化；findViewById() 是找具体 xml 布局文件中的具体 widget 控件
     表单界面Form UI
       -.back button and menu item //表明是次级activity
       -1.create activity_layout file
