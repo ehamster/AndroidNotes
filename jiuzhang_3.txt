@@ -52,6 +52,8 @@ Dynamic ListUI
         return super.onCreateOptionsMenu(menu);
     }//显示出对号
     日期选择器 date picker
+    
+    
 Data Flow between Activitys//activity之间传递数据
   -1.override onActivityResult(int requestCode, int resultCode, Intent data) method 
   // 在主调activity重写这个方法用来接收被调activity传回来的数据,保存在data里
@@ -63,10 +65,15 @@ Data Flow between Activitys//activity之间传递数据
    Intent resultIntent = new Intent();
         resultIntent.putExtra(KEY_EDUCATION,tem_education);//key-value looks like hashMap
         //serialize,deserialize因为
+        
       putExtra不支持传对象，所以需要将对象serilize成为char[]
       所以对象的类需要implement Parcelable（Android class）
       setResult(Activity.RESULT_OK,resultIntent);
    4.修改implement 了Parcelable接口的类里面override的方法，检查是否需要自己修改serialize,deserialize部分，注意解码和还原的变量的顺序
+   writeToParcel method 里面写序列化
+   构造函数 protected Education 里面写反序列化，顺序一致
+   
+   UUID.randomUUID()   随机生成ID
    5.主调函数
    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -74,6 +81,8 @@ Data Flow between Activitys//activity之间传递数据
             Education result = data.getParcelableExtra(KEY_EDUCATION);
         }
     }
+    
+    
     保存数据到本地
     1.Shared Preferences //key-value
     2.Internal /external storage //java read and write
