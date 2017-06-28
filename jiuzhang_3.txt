@@ -1,4 +1,5 @@
 ContentDescription: 帮助盲人阅读
+TextUtils.equals(); //比string.equals（）好，因为后者会空指针异常
 Dynamic ListUI
   -1.create new file layout.xml 放入需要重复的 view
   -2.mainactivity create new container 
