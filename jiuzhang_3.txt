@@ -103,6 +103,8 @@ Data Flow between Activitys//activity之间传递数据
     int intValue = sp.getInt("int",0);
     where is SharedPreferences
     写到文件里，data/com...../shared_prefs/
+    tool android android device monitor 查看
+    data data里面找到文件 是一个xml
     
     如何把对象存在SharedPreference里面，通过序列化
     List<Education> educations = new ArrayList<>();
@@ -119,7 +121,7 @@ How to use Gson
   3.Gson gson = new Gson();
   4.String jsonString = gson.toJson(object);
   把Json转化为对象
-  1.Type type = new TypeToken<project>(){}.getType();
+  1.Type type = new TypeToken<project>(){}.getType();//{}表示<>里面的<>,<List<Project>> 比如这样 
   2.Project projectFromJson = gson.fromJson(jsonString,type);
   
   
