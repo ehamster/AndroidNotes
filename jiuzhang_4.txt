@@ -1,4 +1,5 @@
 ListView
+  完成一个长列表不能用Dynamic list 因为他是把每一个xml转化为view，很费时间，所以使用ListView
   动态列表在内存上不好，所以使用ListView
   converting Layout file into view is a waste of time
   1.MainLayout添加一个ListView作为容器
