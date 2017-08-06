@@ -4,10 +4,13 @@ ListView
   converting Layout file into view is a waste of time
   1.MainLayout添加一个ListView作为容器
   2.create Adapter extends BaseAdapter
-Adapter
+Adapter  (Convert data to view)  1.xml文件转化为view，2.填坑
   is like a converter that convert a list of data into a list of views
   需要用到context。 因为当你想将layout文件转化为view对象时，需要获取布局大小颜色等等属性。
   这些属性就是从context获得
   所以：在Activity里面可以直接调用getLayoutInflater()方法，因为Activity是一个context
   如果不在Activity里面的话，需要context.getLayoutInflater();
+  
+  ListView不知道内容，所以需要Adapter
+  1.什么数据，2.多少数据3.每一个layout的样子
   
