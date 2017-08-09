@@ -14,3 +14,5 @@ Adapter  (Convert data to view)  1.xml文件转化为view，2.填坑
   ListView不知道内容，所以需要Adapter
   1.什么数据，2.多少数据3.每一个layout的样子
   
+Why ListView is fast?
+ 只显示屏幕上的数据，相当于只是调用了几次getView 
