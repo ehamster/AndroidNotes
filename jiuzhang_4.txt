@@ -13,6 +13,27 @@ Adapter  (Convert data to view)  1.xml文件转化为view，2.填坑
   
   ListView不知道内容，所以需要Adapter
   1.什么数据，2.多少数据3.每一个layout的样子
-  
+  1.Add ListView in Layout
+  2.Create class called MyAdapter extends BaseAdapter
+  3.in MainActivity,write setupUI method to create a new TodoListAdatper and pass it to ListView
+  4.ListView magic (use convertView in getView method)
+  5.use ViewHolder
 Why ListView is fast?
  只显示屏幕上的数据，相当于只是调用了几次getView 
+public View getView(int position, View convertView, ViewGroup parent) {
+        ViewHolder vh;
+        if (convertView == null) {
+            convertView = LayoutInflater.from(context).inflate(R.layout.main_list_item,parent,false);
+            vh = new ViewHolder();
+            vh.tv = (TextView) convertView.findViewById(R.id.main_list_item_text);
+            convertView.setTag(vh);
+        }
+        else {
+            vh = (ViewHolder) convertView.getTag();
+        }
+
+
+        Todo todo = list.get(position);
+        vh.tv.setText(todo.text);
+        return convertView;
+    }
