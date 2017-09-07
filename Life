@@ -1,0 +1,6 @@
+1.Create main layout
+2.定义class Basic 和 Education
+3.定义工具类 DateUtils
+4.动态列表，利用getLayoutInflater.inflate
+5.getLayoutInflater().inflate() 相当于LayoutInflater.from(this).infate();
+6.
