@@ -58,7 +58,65 @@ if (PackageManager.PERMISSION_GRANTED == ContextCompat.checkSelfPermission(MainA
     Log.i(DEBUG_TAG, "user has the permission already!");
 } else {
     //do not have permission
+    
+   If has permission 读取图片使用Intent.ACTION_PICK
+private void pickImage() {
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(Intent.createChooser(intent, "Select picture"),
+                               REQ_CODE_PICK_IMAGE);
+    }
+    总结：
+    读取图片：
+    1.权限设置好在MainFes里面  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    2.点击图标，OnClickListener里面先判断权限
+     public void onClick(View v) {
+                if (!PermissionUtils.checkPermission(InfoEditActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
+                    PermissionUtils.requestReadExternalStoragePermission(InfoEditActivity.this);
+                }//dont have permission, get it.
+                else {
+                    pickImage();
+                }
+            }
+            
+      3.有权限则pickImage
+      利用Intent跳转到图库 
+      Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(Intent.createChooser(intent,"select picture"),REQ_CODE_PICK_IMAGE);
+        
+    4.重写OnActivityResult，利用getData（） 获得得到的Uri
+     protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQ_CODE_PICK_IMAGE && resultCode == RESULT_OK) {
+            Uri imageUri = data.getData();
+            if(imageUri!= null) {
+                showImage(imageUri);
+            }
+        }
+    }
+    5.如果Uri有值，则显示图片在修改界面：
+    将URi放进ImageView的tag里方便传递
+    
+     private void showImage(Uri imageUri) {
+        ImageView imageView = (ImageView) findViewById(R.id.basic_info_edit_image);
+        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
 
+        imageView.setTag(imageUri);
+        ImageUtils.loadImage(this,imageUri,imageView);
+    }
 
-
-                                      
+    6.最后调用loadImage
+    通过固定方式，getContentReslover() 和 uri 创建bitmap， ImageView 再设置Bitmap就相当于显示图片了
+    public static void loadImage(Context context, Uri uri, ImageView imageView) {
+        try {
+            Bitmap bitmap = MediaStore.Images.Media.getBitmap(context.getContentResolver(), uri);
+            imageView.setImageBitmap(bitmap);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+      7，点击菜单的对勾，调用自身saveandExit方法
+      将name email imageuri 通过intent传递出去
+      在主界面重写的OnActivityResult（） 里面获得basicInfo对象并调用setupBasicUI()
+      8.    setupBasicUI()里面调用了 之前loadImage方法 显示图片
+      、、、、、、、、、、、、、、、、、、、、、、、
+      给一个ImageView set BitMap 就能显示图片
