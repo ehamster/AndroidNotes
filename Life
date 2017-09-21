@@ -120,3 +120,5 @@ private void pickImage() {
       8.    setupBasicUI()里面调用了 之前loadImage方法 显示图片
       、、、、、、、、、、、、、、、、、、、、、、、
       给一个ImageView set BitMap 就能显示图片
+
+数据持久化：
