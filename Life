@@ -122,3 +122,4 @@ private void pickImage() {
       给一个ImageView set BitMap 就能显示图片
 
 数据持久化：
+利用Gson类,
