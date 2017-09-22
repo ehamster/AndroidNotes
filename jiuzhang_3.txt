@@ -106,7 +106,7 @@ Data Flow between Activitys//activity之间传递数据
     tool android android device monitor 查看
     data data里面找到文件 是一个xml
     
-    如何把对象存在SharedPreference里面，通过序列化
+    如何把对象存在SharedPreference里面，可以把对象转化为String再存进去，Gson就是干这个的！
     List<Education> educations = new ArrayList<>();
      editor.putString("education", convertEducationListToString(educations));
      用GSON，convert java Objects into JSON representation
