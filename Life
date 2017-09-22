@@ -123,3 +123,49 @@ private void pickImage() {
 
 数据持久化：
 利用Gson类,
+在 MODELUtils里利用两个内部类序列化，反序列化Uri对象
+
+   保存数据到本地
+    1.Shared Preferences //key-value
+    2.Internal /external storage //java read and write
+    3.SQLite database
+    4.Cloud
+    
+    1.sharedPreferences (基本类型直接传递，对象需使用Gson转化为Json对象再传递)
+      1.create a sharedPreference: SharedPreferences sp = context.getSharedPreferences(NAME,Context.MODE_PRIVATE);
+      //context is father of activity
+    2. SharedPreferences.Editor editor = sp.edit();
+    editor.putString("key", "aaa"); //key-value
+    editor.putInt("int",10); 
+    editor.apply();
+    //read
+    SharedPreferences sp = context.getSharedPreferences(NAME,Context.MODE_PRIVATE);
+    String value = sp.getString("key",""); //第一个参数不存在的时候返回第二个参数
+    int intValue = sp.getInt("int",0);
+    where is SharedPreferences
+    写到文件里，data/com...../shared_prefs/
+    tool android android device monitor 查看
+    data data里面找到文件 是一个xml
+    
+    如何把对象存在SharedPreference里面，可以把对象转化为String再存进去，Gson就是干这个的！
+    List<Education> educations = new ArrayList<>();
+     editor.putString("education", convertEducationListToString(educations));
+     用GSON，convert java Objects into JSON String representation
+     And convert Json representation into object
+{
+  "name": "JING GUO",//Json
+  "age": 18,
+}
+{\"name\":\"Jiang Guo\",\"age:18}
+How to use Gson
+  1.In build.gradle(Module app) add compile 'com.google.code.gson:2.7'
+  2.click sync now
+  3.Gson gson = new Gson();
+  4.String jsonString = gson.toJson(object);
+  把Json转化为对象
+  1.Type type = new TypeToken<Project>(){}.getType();//{}表示<>里面的<>,<List<Project>> 比如这样 ,保存Project里面对象类型
+  2.Project projectFromJson = gson.fromJson(jsonString,type);
+  
+  
+  
+  
