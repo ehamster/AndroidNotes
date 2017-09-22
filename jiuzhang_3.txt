@@ -109,19 +109,20 @@ Data Flow between Activitys//activity之间传递数据
     如何把对象存在SharedPreference里面，可以把对象转化为String再存进去，Gson就是干这个的！
     List<Education> educations = new ArrayList<>();
      editor.putString("education", convertEducationListToString(educations));
-     用GSON，convert java Objects into JSON representation
+     用GSON，convert java Objects into JSON String representation
      And convert Json representation into object
 {
   "name": "JING GUO",//Json
   "age": 18,
 }
+{\"name\":\"Jiang Guo\",\"age:18}
 How to use Gson
   1.In build.gradle(Module app) add compile 'com.google.code.gson:2.7'
   2.click sync now
   3.Gson gson = new Gson();
   4.String jsonString = gson.toJson(object);
   把Json转化为对象
-  1.Type type = new TypeToken<project>(){}.getType();//{}表示<>里面的<>,<List<Project>> 比如这样 
+  1.Type type = new TypeToken<Project>(){}.getType();//{}表示<>里面的<>,<List<Project>> 比如这样 ,保存Project里面对象类型
   2.Project projectFromJson = gson.fromJson(jsonString,type);
   
   
