@@ -37,3 +37,5 @@ public View getView(int position, View convertView, ViewGroup parent) {
         vh.tv.setText(todo.text);
         return convertView;
     }
+
+ListView正确使用方式：
