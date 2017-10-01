@@ -16,10 +16,17 @@ Adapter  (Convert data to view)  1.xml文件转化为view，2.填坑
   1.Add ListView in Layout
   2.Create class called MyAdapter extends BaseAdapter
   3.in MainActivity,write setupUI method to create a new TodoListAdatper and pass it to ListView
-  4.ListView magic (use convertView in getView method)
-  5.use ViewHolder
+  只显示屏幕上的数据，相当于只是调用了几次getView ，所以节省时间（This way called lazy load）
+  但是默认没有节省空间，需要开发者注意：
+  使用convertView,节省空间，但是流畅性还不好。
+  ((TextView) convertView.findViewById(R.id.main_list_item_text)).setText(todo.text);
+  
+ 这一句话浪费时间，因为是递归寻找位置。
+ 所以使用viewHolder保存找到的位置，不需要每次都去寻找位置。
+  ListView magic (use convertView in getView method)
+  use ViewHolder
 Why ListView is fast?
- 只显示屏幕上的数据，相当于只是调用了几次getView 
+ 
 public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder vh;
         if (convertView == null) {
@@ -39,3 +46,4 @@ public View getView(int position, View convertView, ViewGroup parent) {
     }
 
 ListView正确使用方式：
+注意：使用ConvertView 减少空间内存需求，使用ViewHolder关于滑动流畅性
