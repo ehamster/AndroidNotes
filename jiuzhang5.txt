@@ -1,0 +1,9 @@
+UI Organizating
+
+CoordinatorLayout 下使用AppBarLayout 和 FloatingActionButton才有用
+重构ListView，让开发者不会忘记使用ConvertView和ViewHolder
+    1.create abstract class extends BaseAdapter (一个adapter对应一个界面)
+   （Adapter需要3个东西：1.显示数据的class 2.多少数据 3.什么界面）
+   在里面写
+   protected abstract ViewHolder onCreateViewHolder(ViewGroup parent, int position);//强制开发者返回一个viewHolder
+RecycleView：
