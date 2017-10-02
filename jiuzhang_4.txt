@@ -46,4 +46,8 @@ public View getView(int position, View convertView, ViewGroup parent) {
     }
 
 ListView正确使用方式：
-注意：使用ConvertView 减少空间内存需求，使用ViewHolder关于滑动流畅性
+注意：使用ConvertView 减少空间内存需求，使用ViewHolder关于滑动流畅性##
+
+ListView更新界面：
+notifyDataSetChange
+
