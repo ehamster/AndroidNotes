@@ -74,6 +74,11 @@ Data Flow between Activitys//activity之间传递数据
    writeToParcel method 里面写序列化
    构造函数 protected Education 里面写反序列化，顺序一致
    
+   
+   Intent其他用法：
+   1.启动Activity
+   2.启动 BroadCastReceiver（比如接受wifi信号）
+   3.启动service（比如下载）
    UUID.randomUUID()   随机生成ID
    5.主调函数
    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
