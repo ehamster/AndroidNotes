@@ -1,0 +1,25 @@
+SQLite 数据类型
+1.NULL
+2.INTEGER
+3.REAL, 浮点
+4.BLOB：二进制对象
+5.CHAR：固定长度
+6.VARCHAR：可变长度
+
+SQLiteDataBase 类：
+1.execSQL(String sql) //增删改操作
+2.execSQL(String sql, String[] args);
+3.Cursor rawQuery(String sql, String[] selectionArg)//查询，返回的结果放在Cursor对象中
+若sql没有占位符，则第二个参数可以为null
+4.Context.openOrCreateDatabase(String dname, int mode)
+mode: 1.MODE_PRIVATE:不允许其他程序访问
+    2.MODE_WORLD_READABLE:允许其他读
+    3.MODE_WORLD_WRITABLE：写
+    4.MODE_APPEND:若数据库存在则允许向数据库添加数据
+    
+SQLiteOpenHelper Class
+1. synchronized SQLiteDatabase getReadableDatabase(); //内存不够用这种，只可以查询
+2. synchronized SQLiteDatabase getWritableDatabase();//可以写
+3. abstract onCreate(SQLiteDatabase db)
+首次创建的时候回调这个房发，存在就不执行
+4.abstract onUpgrade(SQLiteDatabase db, int oldV)
