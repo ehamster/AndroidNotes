@@ -7,3 +7,48 @@ CoordinatorLayout 下使用AppBarLayout 和 FloatingActionButton才有用
    在里面写
    protected abstract ViewHolder onCreateViewHolder(ViewGroup parent, int position);//强制开发者返回一个viewHolder
 RecycleView：
+
+
+
+Fragment:  one activity contains multiple fragment
+Only lives in Activity
+4 steps:
+1.Create layout for Fragment
+2.Create a Fragment(.java)   继承两个方法onCreateView() 和onViewCreated()
+
+ public View onCreateView(LayoutInflater inflater,
+                             @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.view_fragment,container,false);
+        b = (Button) view.findViewById(R.id.BUTTON);
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(),"aaaa",Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    
+3. Add fragment container view into MainActivityLayout
+ <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+        
+ 4.show fragment in Mainactivity.java
+ 
+  private void setupFragment() {
+        TodoFragment fragment = new TodoFragment();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .add(R.id.fragment_container, fragment)
+                .commit();
+    }
+   生命周期：
+   
