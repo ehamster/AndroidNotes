@@ -7,9 +7,77 @@ CoordinatorLayout 下使用AppBarLayout 和 FloatingActionButton才有用
    在里面写
    protected abstract ViewHolder onCreateViewHolder(ViewGroup parent, int position);//强制开发者返回一个viewHolder
 RecycleView：
+1.gradle里面添加依赖  compile 'com.android.support:recyclerview-v7:23.1.1'
+RecycleView属于 support， 所以老版本也能用
+2.   <android.support.v7.widget.RecyclerView
+        android:id="@+id/main_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+3. ViewHold class
+    public class TodoListViewHolder extends RecyclerView.ViewHolder {
 
+    TextView todoText;
 
+    public TodoListViewHolder(@NonNull View itemView) {
+        super(itemView);
 
+        todoText = (TextView) itemView.findViewById(R.id.main_list_item_text);
+    }
+}
+4.Adapter class
+public class TodoListAdapter extends RecyclerView.Adapter {
+
+    private List<Todo> data;
+
+    public TodoListAdapter(@NonNull List<Todo> data) {
+        this.data = data;
+    }
+
+    @Override
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext())
+                                  .inflate(R.layout.main_list_item, parent, false);
+        return new TodoListViewHolder(view); //返回自己建立的Viewholder，因为里面有要填的坑
+      }
+
+    @Override
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        Todo todo = data.get(position);
+        ((TodoListViewHolder) holder).todoText.setText(todo.text);
+    }
+
+    @Override
+    public int getItemCount() {
+        return data.size();
+    }
+}
+
+5.  
+private void setupUI(@NonNull List<Todo> todos) {
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.main_recycler_view);
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 2)); // try 3 or 4，这样就是几列的网格布局了
+        recyclerView.setLayoutManager(new LinearLayoutManager(this)); // 垂直下来的一列
+        recyclerView.setAdapter(new TodoListAdapter(todos));
+    }
+        
+        LayManager是什么？ 3种
+        管理里面界面样子
+        我们希望RecycleView可实现不同布局，所以我们用第一种设计模式方便
+        
+        Class RecycleView{
+        private LayoutManager layoutmanager
+        public void setlayoutManager(LayoutMnagaer layoutMnagaer){
+        this.layoutManager = layoutManager;}}// composition 设计模式
+        
+         Class RecycleView{
+       }
+       class VerticalRecycleView extends RecycleVoew{}
+       class GridRecycleView extends RecycleView{}   //inheritance设计模式
+       
+       recycleview
+      加分割线用ItemDecoration 
+      
+       
 Fragment:  one activity contains multiple fragment
 Only lives in Activity
 4 steps:
