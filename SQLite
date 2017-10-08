@@ -23,3 +23,7 @@ SQLiteOpenHelper Class
 3. abstract onCreate(SQLiteDatabase db)
 首次创建的时候回调这个房发，存在就不执行
 4.abstract onUpgrade(SQLiteDatabase db, int oldV)
+5.void close();
+
+用法：
+1.class MySQLiteOpenHelper extends SQLiteOpenHelper{}
