@@ -1,0 +1,3 @@
+Q1. 因为数据库中time是int，所以想当然的把time（int）直接存进去，但是崩溃了，一直想不通，后来发现显示界面的是Recyclerview 的TextView
+要穿进去String类型的值，所以做一下数据类型转换。
+Q2.RecyclerView官方bug 点击save再删除就会卡住，实际上是删除了的！
