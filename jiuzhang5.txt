@@ -120,3 +120,12 @@ Only lives in Activity
     }
    生命周期：
    
+   
+   View Pager左右滑动
+   Navigation drawer 抽屉
+   bottom tab 底部
+   
+   Fragment  可以吧东西放bundle里面
+   用  setArgument()传递参数
+   getArgument()拿到参数 .getInt()
+   
