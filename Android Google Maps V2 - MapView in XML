@@ -1,3 +1,4 @@
+Add in gradle compile 'com.google.android.gms:play-services-maps:11.0.4'
 some_layout.xml
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -115,7 +116,7 @@ SomeManifest.xml
 By using this code we can setup MapView anywhere, inside any ViewPager or Fragment or Activity.
 
 In the latest update of Google for Maps, only MapView is supported for fragments. MapFragment & SupportMapFragment doesn't work. I might be wrong but this is what I saw after trying to implement MapFragment & SupportMapFragment.
-
+compile 'com.google.android.gms:play-services-maps:11.0.4'
 Setting up the layout for showing the map. location_fragment.xml :
 
 <?xml version="1.0" encoding="utf-8"?>
