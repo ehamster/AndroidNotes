@@ -1,0 +1,32 @@
+Oath:
+1. 让用户到dribbble界面，输入账号密码
+https://dribbble.com/oauth/authorize?client_id=648c11c39f4c29b5a2577590a1be88d5d94ddd4d3e878648af50515add63b588
+&scope=public+write
+
+public	Grants read-only access to public information.
+This is the default scope if no scope is provided.
+write	Grants write access to user resources, except comments and shots.
+comment	Grants full access to create, update, and delete comments.
+upload	Grants full access to create, update, and delete shots and attachments.
+四种权限我们用的前两种
+
+2.通过上面的链接跳转到callbackURL之后，网址那里可以获取临时code，只能用一次
+code=f869626a525b055730a72312b61e79c46a1a62f2f7ce3f344b69099086f1e08c
+用这个换最后的登陆令牌，为了安全，用post请求 use postman to send post
+POST https://dribbble.com/oauth/token
+body里面：
+  client_id= 648c11c39f4c29b5a2577590a1be88d5d94ddd4d3e878648af50515add63b588
+  client_secret= bba7a39d8e3b1a47a92eb5553f8cbd4c2cf9f768437a9ad836e63cab36a4c1ae
+  code= f869626a525b055730a72312b61e79c46a1a62f2f7ce3f344b69099086f1e08c(用一次)
+  
+  {
+    "access_token": "b918d9d7c686e26e807e03219730925ecfa1fc1fd7b9c91de466e877ce9c15e6", 最终令牌！！
+    "token_type": "bearer",
+    "scope": "public write",
+    "created_at": 1508186680
+}
+利用最终令牌获取敏感信息
+GET https://api.dribbble.com/v1/user 
+Head里面 Authorization = Bearer b918d9d7c686e26e807e03219730925ecfa1fc1fd7b9c91de466e877ce9c15e6
+
+LoginActivity：两件事，1.A Button. click 跳转到登陆界面。2.从OAuthActivity回来之后，将临时令牌转换为最终令牌
