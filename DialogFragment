@@ -1,3 +1,5 @@
+在dialogfragment里操作数据库有问题，因为dismiss调用后数据库还没有被操作，因为DialogFragment并没有结束，所以让DialogFragment写个接口
+给外部调用，在外部完成数据库操作
 1.在fragment里面显示DialogFragment
 private void showRedDialog(Shiftlog sl, double timeLeftMilli) {
         FragmentTransaction mFragTransaction = getFragmentManager().beginTransaction();
