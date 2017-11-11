@@ -1,0 +1,10 @@
+Question:
+Q1. 在DialogFragment里面点击按钮怎么对外面的Fragment数据进行操作？
+A：在DialogFragment里面写一个接口。 在DialogFragment的函数里调用这个接口的方法。 外部Fragment实现这个接口，重写接口的方法。这样相当于实现了
+DialogFragment的函数实现了功能（功能是写在外部fragment里面的）
+
+Q2.Fragment 之间传递数据如何？
+
+A. 用setArgument() getArgument()  .  和setTag getTag 有异曲同工之妙
+
+Q3.
