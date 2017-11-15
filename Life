@@ -16,12 +16,14 @@
 2. 递归，重复第1部的操作。 
 3. 如果ExtClassLoader也没有加载过，则由Bootstrap ClassLoader出面，它首先查找缓存，如果没有找到的话，就去找自己的规定的路径下，也就是sun.mic.boot.class下面的路径。找到就返回，没有找到，让子加载器自己去找。 
 4. Bootstrap ClassLoader如果没有查找成功，则ExtClassLoader自己在java.ext.dirs路径中去查找，查找成功就返回，查找不成功，再向下让子加载器找。 
-5. ExtClassLoader查找不成功，AppClassLoader就自己查找，在java.class.path路径下查找。找到就返回。如果没有找到就让子类找，如果没有子类会怎么样？抛出各种异常。
+5. ExtClassLoader查找不成功，AppClassLoader就自己查找，在java.class.path路径下查找。找到就返回。如果没有找到就让子类找，如果没有子类会怎么样？
+抛出各种异常。
 
 上面的序列，详细说明了双亲委托的加载流程。我们可以发现委托是从下向上，然后具体查找过程却是自上至下。
 自定义ClassLoader
 
-不知道大家有没有发现，不管是Bootstrap ClassLoader还是ExtClassLoader等，这些类加载器都只是加载指定的目录下的jar包或者资源。如果在某种情况下，我们需要动态加载一些东西呢？比如从D盘某个文件夹加载一个class文件，或者从网络上下载class主内容然后再进行加载，这样可以吗？
+不知道大家有没有发现，不管是Bootstrap ClassLoader还是ExtClassLoader等，这些类加载器都只是加载指定的目录下的jar包或者资源。如果在某种情况下，
+我们需要动态加载一些东西呢？比如从D盘某个文件夹加载一个class文件，或者从网络上下载class主内容然后再进行加载，这样可以吗？
 
 如果要这样做的话，需要我们自定义一个classloader。
 1。编写一个类继承自ClassLoader抽象类。
@@ -30,7 +32,8 @@
 
 Uri:[scheme:][//host:port][path][?query][#fragment]  
 contentProvider:  
-外界的程序通过ContentResolver接口可以访问ContentProvider提供的数据，在Activity当中通过getContentResolver()可以得到当前应用的 ContentResolver实例
+外界的程序通过ContentResolver接口可以访问ContentProvider提供的数据，在Activity当中通过getContentResolver()可以得到当前应用的 
+ContentResolver实例
 
 View.setTag()可以用来传递某些数据！！！！贼牛逼！
 点击图片读取图片需要permission：
@@ -40,12 +43,14 @@ View.setTag()可以用来传递某些数据！！！！贼牛逼！
     Android M对permission有新权限要求， Build.VERSION.SDK_INT 是获取当前手机版本
                                       Build.VERSION_CODES.M  Android M
                                       
-       If the package has the permission, PERMISSION_GRANTED is returned. If it does not have the permission, PERMISSION_DENIED is returned.
+       If the package has the permission, PERMISSION_GRANTED is returned. If it does not have the permission,
+       PERMISSION_DENIED is returned.
 Value is PERMISSION_GRANTED or PERMISSION_DENIED.
 
 1.检查权限状态
 
-如果执行的操作需要一个dangerous permission, 那么每次在执行操作的地方都必须check你是否有这个permission, 因为用户可以在应用设置里随意地更改授权情况, 所以必须每次在使用前都检查是否有权限.
+如果执行的操作需要一个dangerous permission, 那么每次在执行操作的地方都必须check你是否有这个permission, 因为用户可以在应用设置里随意地更改授权情况,
+所以必须每次在使用前都检查是否有权限.
  
 检查权限的方法: ContextCompat.checkSelfPermission()两个参数分别是Context和权限名.
 返回值是:PERMISSION_GRANTED if you have the permission, or PERMISSION_DENIED if not.
@@ -176,7 +181,9 @@ Gson对象主要有两个方法toJson()序列化，fromJson()反序列化
 （1）、普通对象，如User user=new User();得到type方式，user.class
 （2）、复杂点的对象，如List<User> users=new ArrayList<User>();得到type方式,new com.google.gson.reflect.TypeToken<List<User>>(){}.getType()
 5、GsonBuilder有哪些优势
-（1）、可以采用注解的方式，个性化定制需要序列化和方序列化的字段，如在字段前面添加@Expose注解，当采用GsonBuilder.excludeFieldsWithoutExposeAnnotation()方法时，没有该注解的字段将被排除在外。其他注解还有@SerializeName、@Since和@Until，具体意思参见Gson API文档
+（1）、可以采用注解的方式，个性化定制需要序列化和方序列化的字段，如在字段前面添加@Expose注解，当采用GsonBuilder.
+excludeFieldsWithoutExposeAnnotation()方法时，没有该注解的字段将被排除在外。其他注解还有@SerializeName、@Since和@Until，
+具体意思参见Gson API文档
 （2）、定制自己的注解和排除策略。如上述代码中的类 MyExclusionStrategy，
 
   private static Gson gsonForSerialization = new GsonBuilder()
