@@ -7,4 +7,8 @@ Q2.Fragment 之间传递数据如何？
 
 A. 用setArgument() getArgument()  .  和setTag getTag 有异曲同工之妙
 
-Q3.
+Q3.google map api 距离
+
+1 = 111111 m
+radius = (radius*111111 + 10)  
++ 10 是因为要包括进来！！
